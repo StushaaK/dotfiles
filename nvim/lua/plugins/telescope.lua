@@ -15,9 +15,13 @@ return {
                 },
             })
             local builtin = require("telescope.builtin")
-            vim.keymap.set('n', "<C-p>", builtin.find_files, {})
-            vim.keymap.set('n', "<leader>fg", builtin.live_grep, {})
-
+            local wk = require("which-key")
+            wk.register({
+                ["<C-p>"] = { builtin.find_files, "Find Files" },
+                ["<leader>fg"] = { builtin.live_grep, "Find with Grep" },
+                ["<leader>fb"] = { builtin.buffers, "Find Buffer" },
+                ["<leader>fh"] = { builtin.help_tags, "Find Help" },
+            })
             require("telescope").load_extension("ui-select")
         end
     },
